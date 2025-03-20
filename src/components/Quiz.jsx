@@ -79,13 +79,43 @@ function Quiz() {
         <hr />
 
         {result ? (
-          <div>
-            <h1 className="text-xl mb-3">Your Score Is {score} Out Of 5</h1>
+          <div className="flex flex-col gap-7">
+            <h1 className="text-2xl font-bold mb-3">Quiz Completed</h1>
+            <h1 className="text-xl mb-3">Your Score Is {score}/ 5</h1>
 
+            <div className=" w-full flex flex-col justify-end items-end">
+              <div className="w-full flex justify-between">
+                <div className="mb-2">
+                  <h1 className="text-md">Max Score:100%</h1>
+                </div>
+                <div className="mb-2">
+                  <h1 className="text-md">
+                    Correct Answer Score:{correctParcentage}%
+                  </h1>
+                </div>
+              </div>
+              <div className="relative w-[100%] h-3 rounded-full bg-gray-300">
+                <div
+                  className="transition-all absolute h-[100%] top-0 bg-green-500 rounded-xl duration-75"
+                  style={{
+                    width: `${correctParcentage}%`,
+                  }}
+                ></div>
+                <div
+                  className="h-[100%] top-0 transition-all absolute bg-red-500 rounded-xl duration-75
+                  "
+                  style={{
+                    width: `${inCorrectParcentage}%`,
+                  }}
+                ></div>
+                {/* <div className="w-[80%] h-7 transition-all absolute bg-blue rounded-xl"></div> */}
+              </div>
+            </div>
             <div>
               <button
                 type="button"
-                className="py-2 px-14 rounded-md bg-red-500 text-white text-xl font-bold hover:bg-red-400 transition-all cursor-pointer"
+                className="py-2 px-14 rounded-md bg-blue-500 text-white text-xl font-bold hover:bg-blue-600 transition-all cursor-pointer
+              "
                 onClick={() => {
                   setindex(0);
                   setReasult(false);
@@ -95,14 +125,14 @@ function Quiz() {
                   setWrongScore(0);
                 }}
               >
-                Reset
+                Restart Quiz
               </button>
             </div>
           </div>
         ) : (
           <div className="flex flex-col gap-7">
             <div>
-              <h1 className="text-left text-xl">
+              <h1 className="text-left text-lg">
                 {index + 1}.{question.question}
               </h1>
             </div>
@@ -110,27 +140,27 @@ function Quiz() {
             <div className="flex flex-col gap-5">
               <div
                 ref={option1Ref}
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
+                className="py-3 px-5 border-1 border-gray-300 text-left text-md rounded-lg"
                 onClick={(e) => checkAnswer(e, 1)}
               >
                 {question.option1}
               </div>
               <div
                 ref={option2Ref}
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
+                className="py-3 px-5 border-1 border-gray-300 text-left text-md rounded-lg"
                 onClick={(e) => checkAnswer(e, 2)}
               >
                 {question.option2}
               </div>
               <div
                 ref={option3Ref}
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
+                className="py-3 px-5 border-1 border-gray-300 text-left text-md rounded-lg"
                 onClick={(e) => checkAnswer(e, 3)}
               >
                 {question.option3}
               </div>
               <div
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
+                className="py-3 px-5 border-1 border-gray-300 text-left text-md rounded-lg"
                 ref={option4Ref}
                 onClick={(e) => checkAnswer(e, 4)}
               >
@@ -141,7 +171,7 @@ function Quiz() {
             <div>
               <button
                 type="button"
-                className="py-2 px-14 rounded-md bg-blue-500 text-white text-xl font-bold hover:bg-blue-600 transition-all cursor-pointer w-full"
+                className="py-2 px-14 rounded-md bg-blue-500 text-white text-lg font-bold hover:bg-blue-600 transition-all cursor-pointer w-full"
                 onClick={next}
               >
                 Next Question
@@ -151,22 +181,27 @@ function Quiz() {
             <div className=" w-full flex flex-col justify-end items-end">
               <div className="w-full flex justify-between">
                 <div className="mb-2">
-                  <h1 className="text-xl">Max Score:100%</h1>
+                  <h1 className="text-md">Max Score:100%</h1>
                 </div>
                 <div className="mb-2">
-                  <h1 className="text-xl">
+                  <h1 className="text-md">
                     Correct Answer Score:{correctParcentage}%
                   </h1>
                 </div>
               </div>
-              <div className="relative w-[100%] h-7 rounded-xl border-1 border-black">
+              <div className="relative w-[100%] h-3 rounded-full bg-gray-300">
                 <div
-                  className="transition-all absolute h-[100%] top-0 bg-black rounded-xl"
-                  style={{ width: `${correctParcentage}%` }}
+                  className="transition-all absolute h-[100%] top-0 bg-green-500 rounded-xl duration-75"
+                  style={{
+                    width: `${correctParcentage}%`,
+                  }}
                 ></div>
                 <div
-                  className="h-[100%] top-0 transition-all absolute bg-gray-700 rounded-xl"
-                  style={{ width: `${inCorrectParcentage}%` }}
+                  className="h-[100%] top-0 transition-all absolute bg-red-500 rounded-xl duration-75
+                  "
+                  style={{
+                    width: `${inCorrectParcentage}%`,
+                  }}
                 ></div>
                 {/* <div className="w-[80%] h-7 transition-all absolute bg-blue rounded-xl"></div> */}
               </div>
