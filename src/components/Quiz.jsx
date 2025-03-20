@@ -1,5 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { data } from "../utils/Question.js";
+// import { FaCheckCircle } from "react-icons/fa";
+// import { FaTimesCircle } from "react-icons/fa";
+
+{
+  /* <FaCheckCircle /> */
+}
+{
+  /* <FaTimesCircle /> */
+}
 
 function Quiz() {
   let [score, setScore] = useState(0);
@@ -21,24 +30,19 @@ function Quiz() {
   useEffect(() => {
     let correctAnswerParcentage = (correctAnswer / totalAnswer) * 100;
     let inCorrectAnswerParcentage = (incorrectAnswer / totalAnswer) * 100;
-    console.log(correctAnswerParcentage);
-    console.log(inCorrectAnswerParcentage);
     setCorrectParcentage(correctAnswerParcentage);
     setInCorrectParcentage(inCorrectAnswerParcentage);
   }, [correctAnswer, totalAnswer, incorrectAnswer]);
   let checkAnswer = (e, ans) => {
     if (lock === false) {
-      console.log(e.target);
-      console.log(question.ans);
-
       if (question.ans === ans) {
         e.target.classList.add("correct");
         setLock(true);
         setScore((prev) => prev + 1);
         // setCorrectParcentage(correctAnswerParcentage);
       } else {
-        console.log("kuch nhe hua ha");
         e.target.classList.add("incorrect");
+
         // setInCorrectParcentage(inCorrectAnswerParcentage);
         setWrongScore((prev) => prev + 1);
 
@@ -67,9 +71,11 @@ function Quiz() {
       <div
         className="min-w-[60%]
         px-10 py-10
-     bg-white flex flex-col gap-5 rounded-2xl"
+     bg-white flex flex-col gap-5 rounded-2xl shadow-lg"
       >
-        <h1 className="text-left font-bold text-2xl mb-2">Quiz App</h1>
+        <h1 className="text-left font-bold text-2xl mb-2 text-gray-700">
+          Quiz App
+        </h1>
         <hr />
 
         {result ? (
@@ -104,27 +110,27 @@ function Quiz() {
             <div className="flex flex-col gap-5">
               <div
                 ref={option1Ref}
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md"
+                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
                 onClick={(e) => checkAnswer(e, 1)}
               >
                 {question.option1}
               </div>
               <div
                 ref={option2Ref}
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md"
+                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
                 onClick={(e) => checkAnswer(e, 2)}
               >
                 {question.option2}
               </div>
               <div
                 ref={option3Ref}
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md"
+                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
                 onClick={(e) => checkAnswer(e, 3)}
               >
                 {question.option3}
               </div>
               <div
-                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md"
+                className="py-3 px-5 border-1 border-[156 163 175] text-left text-md rounded-lg"
                 ref={option4Ref}
                 onClick={(e) => checkAnswer(e, 4)}
               >
@@ -135,10 +141,10 @@ function Quiz() {
             <div>
               <button
                 type="button"
-                className="py-2 px-14 rounded-md bg-red-500 text-white text-xl font-bold hover:bg-red-400 transition-all cursor-pointer"
+                className="py-2 px-14 rounded-md bg-blue-500 text-white text-xl font-bold hover:bg-blue-600 transition-all cursor-pointer w-full"
                 onClick={next}
               >
-                Next
+                Next Question
               </button>
             </div>
 

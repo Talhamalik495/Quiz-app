@@ -3,19 +3,19 @@
 body{
     height: 100%;
     width: 100%;
-    background: rgb(0, 0, 0,0.5);
+    background: #f3f4f6;
 }
 
 
 
 .correct{
-    background-color: #dffff2;
+    background-color: #dcfce7;
     border: 1px solid;
-    border-color:#00d397; 
+    border-color:#22c55e; 
 }
 
 .incorrect{
-    background-color: #ffebeb;
+    background-color: #fee2e2;
     border: 1px solid;
-    border-color:#ff4a4a; 
+    border-color:#ef4444; 
 }
